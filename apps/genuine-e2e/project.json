@@ -1,0 +1,33 @@
+{
+  "name": "genuine-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/genuine-e2e/src",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/genuine-e2e/cypress.config.ts",
+        "testingType": "e2e",
+        "devServerTarget": "genuine:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "genuine:serve:production"
+        },
+        "ci": {
+          "devServerTarget": "genuine:serve-static"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/genuine-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["genuine"]
+}
