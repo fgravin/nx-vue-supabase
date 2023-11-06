@@ -2,18 +2,24 @@
   "name": "@camptocamp/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "start": "nx serve genuine"
+  },
   "private": true,
   "dependencies": {
     "@fastify/autoload": "~5.7.1",
     "@fastify/sensible": "~5.2.0",
+    "@headlessui/vue": "^1.7.16",
+    "@heroicons/vue": "^2.0.18",
     "@supabase/supabase-js": "^2.38.4",
     "axios": "^1.0.0",
     "es": "npm:@elastic/elasticsearch@^8.10.0",
     "fastify": "~4.13.0",
     "fastify-plugin": "~4.5.0",
+    "pinia": "^2.1.7",
     "tslib": "^2.3.0",
-    "vue": "^3.3.4"
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.5"
   },
   "devDependencies": {
     "@nx/cypress": "17.0.2",

@@ -4,6 +4,12 @@
 
 @layer components {
   .btn {
-    @apply text-white bg-blue-400 py-2 hover:bg-blue-500 transition-colors rounded
+    @apply py-2 px-4 text-white bg-blue-400 py-2 hover:bg-blue-500 transition-colors rounded;
+  }
+  .sidebar-btn {
+    @apply p-2 leading-3 rounded hover:bg-gray-600 hover:text-white hover:font-bold transition-colors;
+  }
+  .page-title {
+    @apply text-3xl font-bold uppercase my-8;
   }
 }

@@ -1,5 +1,6 @@
-const { createGlobPatternsForDependencies } = require('@nx/vue/tailwind');
-const { join } = require('path');
+const { createGlobPatternsForDependencies } = require('@nx/vue/tailwind')
+const { join } = require('path')
+const colors = require('tailwindcss/colors')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -9,7 +10,11 @@ module.exports = {
     ...createGlobPatternsForDependencies(__dirname),
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: colors.blue['400'],
+      },
+    },
   },
   plugins: [],
-};
+}
