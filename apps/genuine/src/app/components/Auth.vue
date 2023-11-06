@@ -5,12 +5,17 @@ import type { Credentials } from '../types/global'
 import type { Ref } from 'vue/dist/vue'
 import type { Session } from '@supabase/gotrue-js/src/lib/types'
 import router from '../router'
+import { handleSignup } from '../vuetils/useAuth'
 
 const session: Ref<Session> = inject('session')
 const loading = ref(false)
 const email = ref('')
 const password = ref('')
 
+const reset = () => {
+  email.value = ''
+  password.value = ''
+}
 const handleMagicLink = async () => {
   try {
     loading.value = true
@@ -53,7 +58,7 @@ const handleLSignin = async (credentials: Credentials) => {
     <h1 class="page-title">Login</h1>
 
     <div class="grow flex justify-center mt-12">
-      <div class="w-1/2 md:w-1/3">
+      <div class="w-1/2 xl:w-1/3">
         <div class="mb-4">
           <label class="font-bold text-grey-darker block mb-2">Email</label>
           <input
@@ -73,18 +78,28 @@ const handleLSignin = async (credentials: Credentials) => {
           />
         </div>
         <div class="flex flex-col gap-4 mt-12 justify-center">
-          <div class="flex justify-center text-center">
+          <div class="flex gap-1 justify-center text-center">
+            <div>No account ? You can</div>
             <input
-              @click="handleMagicLink"
+              @click="handleSignup({ email, password })"
               type="submit"
               class="block cursor-pointer underline hover:text-gray-500"
-              :value="loading ? 'Loading' : 'Send magic link'"
+              :value="loading ? 'Loading' : 'signup'"
               :disabled="loading"
             />
+            <div>or</div>
+            <div class="flex justify-center text-center">
+              <input
+                @click="handleMagicLink"
+                type="submit"
+                class="block cursor-pointer underline hover:text-gray-500"
+                :value="loading ? 'Loading' : 'send magic link'"
+                :disabled="loading"
+              />
+            </div>
           </div>
-
-          <div class="flex gap-7 justify-center">
-            <button type="reset" class="btn">Reset</button>
+          <div class="flex gap-7 justify-center mt-4">
+            <button type="reset" class="btn" @click="reset">Reset</button>
             <button
               @click="
                 handleLSignin({

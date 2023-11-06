@@ -78,7 +78,7 @@ const submitForm = async () => {
         class="btn"
         @click="router.push({ name: 'metadataList' })"
       >
-        Reset
+        Cancel
       </button>
       <button @click="submitForm" class="btn">Submit</button>
     </div>
